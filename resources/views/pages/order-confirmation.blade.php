@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Order Confirmed | MarketLink – eGreen Basket</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+</head>
+<body class="bg-cream">
+
+  <header class="py-4 bg-white border-bottom border-subtle">
+    <div class="container text-center">
+      <a class="navbar-brand justify-content-center" href="{{ url('/') }}">
+        <div class="brand-icon"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="brand-title">MarketLink</span>
+          <span class="brand-subtitle">eGreen Basket</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7 text-center">
+          
+          <div class="rounded-circle bg-emerald text-white mx-auto mb-3 shadow-premium d-flex align-items-center justify-content-center" style="width:84px; height:84px; font-size:2.4rem;">
+            <i class="bi bi-check-lg"></i>
+          </div>
+
+          <span class="badge bg-sage text-forest px-3 py-2 rounded-pill fw-bold mb-2">Pre-Order Successfully Placed</span>
+          <h1 class="display-6 font-serif mb-2">Your Pre-Order Is Confirmed</h1>
+          <p class="text-muted mb-4">
+            We have notified the grower. Your fresh produce will be freshly prepared and waiting at their market stall.
+          </p>
+
+          <div class="card p-4 p-md-5 rounded-32 border-subtle shadow-md bg-white text-start mb-4">
+            <div class="d-flex justify-content-between align-items-center border-bottom border-subtle pb-3 mb-3">
+              <div>
+                <span class="text-muted small text-uppercase fw-bold">Order Identifier</span>
+                <h4 class="font-serif text-forest mb-0">#ML-9824</h4>
+              </div>
+              <span class="badge bg-warning-subtle text-warning border px-3 py-2 rounded-pill fw-bold">
+                <i class="bi bi-hourglass-split me-1"></i> Placed (Awaiting Market Day)
+              </span>
+            </div>
+
+            <div class="row g-3 small mb-4">
+              <div class="col-6">
+                <span class="text-muted d-block">Producer:</span>
+                <strong class="text-forest">Vance Heritage Organic Farm</strong>
+              </div>
+              <div class="col-6">
+                <span class="text-muted d-block">Market Location:</span>
+                <strong class="text-forest">Valley Green Market (Stall #04)</strong>
+              </div>
+              <div class="col-6">
+                <span class="text-muted d-block">Pickup Date:</span>
+                <strong class="text-forest">Saturday, October 3, 2026</strong>
+              </div>
+              <div class="col-6">
+                <span class="text-muted d-block">Time Window:</span>
+                <strong class="text-forest">08:30 AM – 10:00 AM</strong>
+              </div>
+              <div class="col-6">
+                <span class="text-muted d-block">Total to Settle:</span>
+                <strong class="text-forest fs-6">$15.25</strong>
+              </div>
+              <div class="col-6">
+                <span class="text-muted d-block">Payment Method:</span>
+                <span class="badge bg-light text-dark border">Pay in Person at Stall</span>
+              </div>
+            </div>
+
+            <h6 class="font-serif border-top border-subtle pt-3 mb-2">Reserved Produce:</h6>
+            <ul class="list-group list-group-flush small mb-3">
+              <li class="list-group-item px-0 d-flex justify-content-between bg-transparent">
+                <span>Vine-Ripened Heirloom Tomatoes (2 lbs)</span>
+                <strong>$9.00</strong>
+              </li>
+              <li class="list-group-item px-0 d-flex justify-content-between bg-transparent">
+                <span>Pasture-Raised Golden Yolk Eggs (1 dozen)</span>
+                <strong>$6.25</strong>
+              </li>
+            </ul>
+
+            <div class="p-3 bg-cream rounded-16 small border-subtle">
+              <i class="bi bi-info-circle text-emerald me-1"></i>
+              A confirmation text message and email has been dispatched to <strong>alexander.wright@example.com</strong>.
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3 justify-content-center">
+            <a href="{{ url('/order-tracking') }}?id=ML-9824" class="btn btn-forest rounded-pill px-4 py-2">
+              <i class="bi bi-radar me-1"></i> Track Order Status
+            </a>
+            <a href="{{ url('/customer/orders') }}" class="btn btn-outline-forest rounded-pill px-4 py-2">
+              <i class="bi bi-receipt me-1"></i> View in Dashboard
+            </a>
+            <a href="{{ url('/markets') }}" class="btn btn-link text-forest text-decoration-none">
+              Back to Markets
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="{{ asset('assets/js/main.js') }}"></script>
+  <script src="{{ asset('assets/js/cart.js') }}"></script>
+  <script>
+    CartService.clearCart();
+  </script>
+</body>
+</html>

@@ -1,0 +1,728 @@
+/* ==========================================================================
+   MarketLink Dashboard Stylesheet
+   Dedicated UI Architecture for Customer, Farmer & Admin Portals
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Shared Dashboard Layout & Architecture
+   -------------------------------------------------------------------------- */
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--surface-offwhite, #fbf9f6);
+  position: relative;
+}
+
+/* Sidebar Core */
+.dashboard-sidebar {
+  width: 280px;
+  min-width: 280px;
+  background-color: var(--primary-forest, #14351d);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: all var(--transition-normal, 0.3s ease);
+  z-index: 1025;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.portal-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: var(--radius-full, 9999px);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.customer-portal-badge {
+  background: rgba(56, 163, 115, 0.22);
+  color: #6ee7b7;
+  border: 1px solid rgba(110, 231, 183, 0.35);
+}
+
+.farmer-portal-badge {
+  background: rgba(197, 155, 39, 0.22);
+  color: #fcd34d;
+  border: 1px solid rgba(252, 211, 77, 0.35);
+}
+
+.admin-portal-badge {
+  background: rgba(239, 68, 68, 0.22);
+  color: #fca5a5;
+  border: 1px solid rgba(252, 165, 165, 0.35);
+}
+
+.sidebar-menu {
+  padding: 16px 12px;
+  flex-grow: 1;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+}
+
+.sidebar-heading {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 10px 14px 6px;
+  font-weight: 700;
+}
+
+.sidebar-item {
+  margin-bottom: 4px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  color: rgba(255, 255, 255, 0.75);
+  border-radius: var(--radius-sm, 10px);
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: all var(--transition-fast, 0.2s ease);
+  text-decoration: none;
+}
+
+.sidebar-link i {
+  font-size: 1.15rem;
+  width: 22px;
+  text-align: center;
+  color: var(--primary-mint-light, #52b788);
+  transition: transform var(--transition-fast, 0.2s ease);
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.sidebar-link.active {
+  background-color: var(--primary-emerald, #245e3f);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-link.active i {
+  color: var(--accent-gold, #c59b27);
+}
+
+.sidebar-badge {
+  margin-left: auto;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: var(--radius-full, 9999px);
+  background: var(--accent-gold, #c59b27);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.user-snippet {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-mint, #38a373);
+}
+
+.user-info h6 {
+  color: #ffffff;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.user-info span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+}
+
+/* Dashboard Main */
+.dashboard-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: var(--surface-offwhite, #fbf9f6);
+}
+
+.dashboard-topbar {
+  height: 74px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-subtle, rgba(20, 53, 29, 0.08));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dashboard-container {
+  padding: 32px 30px;
+  flex-grow: 1;
+}
+
+/* --------------------------------------------------------------------------
+   2. Missing Utilities, Grids & Stat Cards
+   -------------------------------------------------------------------------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 24px;
+  border: 1px solid var(--border-subtle, rgba(20, 53, 29, 0.08));
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  transition: all var(--transition-normal, 0.3s ease);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 100%;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(36, 94, 63, 0.1);
+  border-color: rgba(36, 94, 63, 0.25);
+}
+
+.stat-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--primary-forest, #14351d);
+  line-height: 1.15;
+  margin-bottom: 2px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted, #647366);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.stat-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.stat-trend.positive {
+  color: #1b7a42;
+}
+
+.stat-subtext {
+  margin-top: 4px;
+}
+
+.stat-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.65rem;
+  flex-shrink: 0;
+}
+
+.stat-icon.green {
+  background-color: var(--accent-sage, #e8f5ed);
+  color: var(--primary-emerald, #245e3f);
+}
+
+.stat-icon.gold {
+  background-color: var(--accent-gold-light, #fef8e7);
+  color: var(--accent-gold, #c59b27);
+}
+
+.stat-icon.blue {
+  background-color: #e8f1fd;
+  color: #1a73e8;
+}
+
+.stat-icon.red {
+  background-color: #fde8e8;
+  color: #d93025;
+}
+
+/* Subtle Background Classes */
+.bg-forest-subtle {
+  background-color: rgba(20, 53, 29, 0.08) !important;
+}
+
+.bg-sage-subtle {
+  background-color: rgba(56, 163, 115, 0.12) !important;
+}
+
+.bg-mint-subtle {
+  background-color: rgba(82, 183, 136, 0.15) !important;
+}
+
+.bg-gold-subtle {
+  background-color: rgba(197, 155, 39, 0.12) !important;
+}
+
+.bg-warning-subtle {
+  background-color: #fff8e1 !important;
+}
+
+.bg-danger-subtle {
+  background-color: #fde8e8 !important;
+}
+
+.bg-info-subtle {
+  background-color: #e3f2fd !important;
+}
+
+/* Small Button Utility */
+.btn-xs {
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  border-radius: var(--radius-full, 9999px);
+}
+
+/* Content Cards */
+.content-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle, rgba(20, 53, 29, 0.08));
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+  margin-bottom: 24px;
+  transition: box-shadow var(--transition-normal, 0.3s ease);
+}
+
+.content-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.content-card-header {
+  padding: 18px 24px;
+  margin: -24px -24px 20px -24px;
+  border-bottom: 1px solid var(--border-subtle, rgba(20, 53, 29, 0.08));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   3. CUSTOMER PORTAL - DEDICATED STYLING & ISOLATION
+   -------------------------------------------------------------------------- */
+/* Customer Sidebar Theme */
+.dashboard-sidebar.customer-sidebar,
+.dashboard-customer-wrapper .dashboard-sidebar {
+  background: linear-gradient(180deg, #0d2820 0%, #081d17 100%);
+  border-right: 1px solid rgba(82, 183, 136, 0.18);
+}
+
+.dashboard-sidebar.customer-sidebar .sidebar-header,
+.dashboard-customer-wrapper .sidebar-header {
+  border-bottom: 1px solid rgba(82, 183, 136, 0.16);
+}
+
+.dashboard-sidebar.customer-sidebar .sidebar-heading,
+.dashboard-customer-wrapper .sidebar-heading {
+  color: #72a991;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.dashboard-sidebar.customer-sidebar .sidebar-link,
+.dashboard-customer-wrapper .sidebar-link {
+  color: rgba(220, 242, 230, 0.78);
+}
+
+.dashboard-sidebar.customer-sidebar .sidebar-link i,
+.dashboard-customer-wrapper .sidebar-link i {
+  color: #52b788;
+}
+
+.dashboard-sidebar.customer-sidebar .sidebar-link:hover,
+.dashboard-customer-wrapper .sidebar-link:hover {
+  background-color: rgba(82, 183, 136, 0.14);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.dashboard-sidebar.customer-sidebar .sidebar-link.active,
+.dashboard-customer-wrapper .sidebar-link.active {
+  background: linear-gradient(90deg, rgba(56, 163, 115, 0.35) 0%, rgba(56, 163, 115, 0.1) 100%);
+  color: #ffffff;
+  font-weight: 700;
+  border-left: 3px solid #52b788;
+  box-shadow: 0 4px 14px rgba(8, 29, 23, 0.4);
+}
+
+.dashboard-sidebar.customer-sidebar .sidebar-link.active i,
+.dashboard-customer-wrapper .sidebar-link.active i {
+  color: #6ee7b7;
+}
+
+.dashboard-sidebar.customer-sidebar .sidebar-badge,
+.dashboard-customer-wrapper .sidebar-badge {
+  background: #38a373;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(56, 163, 115, 0.4);
+}
+
+.dashboard-sidebar.customer-sidebar .sidebar-footer,
+.dashboard-customer-wrapper .sidebar-footer {
+  border-top: 1px solid rgba(82, 183, 136, 0.16);
+  background: rgba(4, 15, 12, 0.4);
+}
+
+.dashboard-sidebar.customer-sidebar .user-avatar,
+.dashboard-customer-wrapper .user-avatar {
+  border-color: #52b788;
+}
+
+.dashboard-sidebar.customer-sidebar .user-info span,
+.dashboard-customer-wrapper .user-info span {
+  color: #72a991;
+}
+
+/* Customer Main Content & Container */
+.dashboard-customer-wrapper .dashboard-main,
+.customer-dashboard-view .dashboard-main {
+  background-color: #f7faf8;
+}
+
+.dashboard-customer-wrapper .dashboard-topbar,
+.customer-dashboard-view .dashboard-topbar {
+  border-bottom: 1px solid rgba(56, 163, 115, 0.14);
+}
+
+.dashboard-customer-wrapper .stat-card:hover,
+.customer-dashboard-view .stat-card:hover {
+  border-color: rgba(56, 163, 115, 0.35);
+  box-shadow: 0 8px 24px rgba(56, 163, 115, 0.08);
+}
+
+.dashboard-customer-wrapper .card,
+.customer-dashboard-view .card {
+  border-color: rgba(56, 163, 115, 0.12);
+  transition: box-shadow var(--transition-normal, 0.3s ease);
+}
+
+.dashboard-customer-wrapper .card:hover,
+.customer-dashboard-view .card:hover {
+  box-shadow: 0 8px 25px rgba(20, 53, 29, 0.07);
+}
+
+/* --------------------------------------------------------------------------
+   4. FARMER / VENDOR PORTAL - DEDICATED STYLING & ISOLATION
+   -------------------------------------------------------------------------- */
+/* Farmer Sidebar Theme */
+.dashboard-sidebar.farmer-sidebar,
+.dashboard-farmer-wrapper .dashboard-sidebar {
+  background: linear-gradient(180deg, #153420 0%, #0d2416 100%);
+  border-right: 1px solid rgba(197, 155, 39, 0.18);
+}
+
+.dashboard-sidebar.farmer-sidebar .sidebar-header,
+.dashboard-farmer-wrapper .sidebar-header {
+  border-bottom: 1px solid rgba(197, 155, 39, 0.16);
+}
+
+.dashboard-sidebar.farmer-sidebar .sidebar-heading,
+.dashboard-farmer-wrapper .sidebar-heading {
+  color: #dfb957;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.dashboard-sidebar.farmer-sidebar .sidebar-link,
+.dashboard-farmer-wrapper .sidebar-link {
+  color: rgba(254, 248, 231, 0.78);
+}
+
+.dashboard-sidebar.farmer-sidebar .sidebar-link i,
+.dashboard-farmer-wrapper .sidebar-link i {
+  color: #c59b27;
+}
+
+.dashboard-sidebar.farmer-sidebar .sidebar-link:hover,
+.dashboard-farmer-wrapper .sidebar-link:hover {
+  background-color: rgba(197, 155, 39, 0.14);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.dashboard-sidebar.farmer-sidebar .sidebar-link.active,
+.dashboard-farmer-wrapper .sidebar-link.active {
+  background: linear-gradient(90deg, rgba(197, 155, 39, 0.32) 0%, rgba(197, 155, 39, 0.08) 100%);
+  color: #ffffff;
+  font-weight: 700;
+  border-left: 3px solid #c59b27;
+  box-shadow: 0 4px 14px rgba(13, 36, 22, 0.4);
+}
+
+.dashboard-sidebar.farmer-sidebar .sidebar-link.active i,
+.dashboard-farmer-wrapper .sidebar-link.active i {
+  color: #fcd34d;
+}
+
+.dashboard-sidebar.farmer-sidebar .sidebar-badge,
+.dashboard-farmer-wrapper .sidebar-badge {
+  background: #c59b27;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(197, 155, 39, 0.4);
+}
+
+.dashboard-sidebar.farmer-sidebar .sidebar-footer,
+.dashboard-farmer-wrapper .sidebar-footer {
+  border-top: 1px solid rgba(197, 155, 39, 0.16);
+  background: rgba(8, 22, 14, 0.4);
+}
+
+.dashboard-sidebar.farmer-sidebar .user-avatar,
+.dashboard-farmer-wrapper .user-avatar {
+  border-color: #c59b27;
+}
+
+.dashboard-sidebar.farmer-sidebar .user-info span,
+.dashboard-farmer-wrapper .user-info span {
+  color: #dfb957;
+}
+
+/* Farmer Main Content & Container */
+.dashboard-farmer-wrapper .dashboard-main,
+.farmer-dashboard-view .dashboard-main {
+  background-color: #fcfaf6;
+}
+
+.dashboard-farmer-wrapper .dashboard-topbar,
+.farmer-dashboard-view .dashboard-topbar {
+  border-bottom: 1px solid rgba(197, 155, 39, 0.16);
+}
+
+.dashboard-farmer-wrapper .stat-card:hover,
+.farmer-dashboard-view .stat-card:hover {
+  border-color: rgba(197, 155, 39, 0.4);
+  box-shadow: 0 8px 24px rgba(197, 155, 39, 0.1);
+}
+
+.dashboard-farmer-wrapper .content-card,
+.farmer-dashboard-view .content-card {
+  border-color: rgba(197, 155, 39, 0.16);
+}
+
+.dashboard-farmer-wrapper .content-card:hover,
+.farmer-dashboard-view .content-card:hover {
+  box-shadow: 0 8px 25px rgba(20, 53, 29, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   5. ADMIN PORTAL - DEDICATED STYLING
+   -------------------------------------------------------------------------- */
+.dashboard-sidebar.admin-sidebar,
+.dashboard-admin-wrapper .dashboard-sidebar {
+  background: linear-gradient(180deg, #111827 0%, #0a0e17 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-sidebar.admin-sidebar .sidebar-heading,
+.dashboard-admin-wrapper .sidebar-heading {
+  color: #94a3b8;
+}
+
+.dashboard-sidebar.admin-sidebar .sidebar-link i,
+.dashboard-admin-wrapper .sidebar-link i {
+  color: #38bdf8;
+}
+
+.dashboard-sidebar.admin-sidebar .sidebar-link.active,
+.dashboard-admin-wrapper .sidebar-link.active {
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.3) 0%, rgba(239, 68, 68, 0.08) 100%);
+  border-left: 3px solid #ef4444;
+}
+
+.dashboard-sidebar.admin-sidebar .sidebar-link.active i,
+.dashboard-admin-wrapper .sidebar-link.active i {
+  color: #fca5a5;
+}
+
+.dashboard-sidebar.admin-sidebar .user-avatar,
+.dashboard-admin-wrapper .user-avatar {
+  border-color: #ef4444;
+}
+
+/* --------------------------------------------------------------------------
+   6. Shared Tables, Badges, Slots & Responsive
+   -------------------------------------------------------------------------- */
+.table-custom {
+  width: 100%;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.table-custom thead th {
+  background-color: var(--surface-offwhite, #fbf9f6);
+  color: var(--dark-muted, #536155);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-subtle, rgba(20, 53, 29, 0.08));
+}
+
+.table-custom tbody td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle, rgba(20, 53, 29, 0.08));
+  color: var(--text-primary, #18221b);
+  font-size: 0.92rem;
+}
+
+.table-custom tbody tr:hover {
+  background-color: rgba(232, 245, 237, 0.45);
+}
+
+/* Status Badges */
+.badge-status {
+  padding: 6px 12px;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.badge-status.placed { background: #e3f2fd; color: #1976d2; }
+.badge-status.accepted { background: #fff8e1; color: #f57f17; }
+.badge-status.ready, .badge-status.ready_for_pickup { background: #e8f5e9; color: #2e7d32; }
+.badge-status.completed { background: #f1f8e9; color: #33691e; }
+.badge-status.cancelled, .badge-status.declined { background: #ffebee; color: #c62828; }
+.badge-status.pending { background: #fff3e0; color: #e65100; }
+.badge-status.approved { background: #e8f5e9; color: #2e7d32; }
+.badge-status.suspended { background: #fbe9e7; color: #d84315; }
+
+/* Pickup Slot Card */
+.slot-card {
+  border: 2px solid var(--border-subtle, rgba(20, 53, 29, 0.08));
+  border-radius: var(--radius-md, 16px);
+  padding: 16px;
+  transition: all var(--transition-fast, 0.2s ease);
+  cursor: pointer;
+  background: #ffffff;
+}
+
+.slot-card:hover {
+  border-color: var(--primary-mint, #38a373);
+  transform: translateY(-2px);
+}
+
+.slot-card.selected {
+  border-color: var(--primary-emerald, #245e3f);
+  background-color: var(--accent-sage, #e8f5ed);
+}
+
+/* Responsive & Mobile Overlay */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1024;
+}
+
+@media (max-width: 991.98px) {
+  .dashboard-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -290px;
+  }
+  
+  .dashboard-sidebar.show {
+    left: 0;
+  }
+  
+  .sidebar-overlay.show {
+    display: block;
+  }
+  
+  .dashboard-topbar {
+    padding: 0 16px;
+  }
+  
+  .dashboard-container {
+    padding: 20px 16px;
+  }
+}

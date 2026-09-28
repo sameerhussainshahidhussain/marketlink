@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | MarketLink – eGreen Basket</title>
+  <meta name="description" content="Register your MarketLink customer account to reserve fresh organic produce at local weekend farmers markets.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+</head>
+<body class="bg-cream">
+
+  <header class="py-4 bg-white border-bottom border-subtle">
+    <div class="container text-center">
+      <a class="navbar-brand justify-content-center" href="{{ url('/') }}">
+        <div class="brand-icon"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="brand-title">MarketLink</span>
+          <span class="brand-subtitle">eGreen Basket</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-7">
+          <div class="card p-4 p-md-5 rounded-32 border-subtle shadow-md bg-white">
+            
+            <div class="text-center mb-4">
+              <span class="section-tag"><i class="bi bi-person-plus"></i> Join MarketLink</span>
+              <h3 class="font-serif text-forest mb-1">Create Your Account</h3>
+              <p class="text-muted small">Reserve harvest stock from verified local farmers and support neighborhood markets.</p>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label small fw-bold">Select Account Type</label>
+              <div class="row g-2">
+                <div class="col-6">
+                  <div class="p-3 border rounded-16 bg-cream text-center cursor-pointer" id="roleCustomerCard" onclick="toggleRegisterRole('customer')">
+                    <i class="bi bi-basket3 fs-3 text-forest mb-1 d-block"></i>
+                    <strong class="d-block text-forest small">Shopper / Customer</strong>
+                    <span class="text-muted" style="font-size:0.75rem;">Pre-order for market pickup</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-3 border rounded-16 bg-white text-center cursor-pointer" id="roleFarmerCard" onclick="toggleRegisterRole('farmer')">
+                    <i class="bi bi-shop fs-3 text-emerald mb-1 d-block"></i>
+                    <strong class="d-block text-forest small">Farmer / Producer</strong>
+                    <span class="text-muted" style="font-size:0.75rem;">Manage stall & weekly stock</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <form id="registerForm" onsubmit="event.preventDefault(); showToast('Account created successfully! Redirecting...', 'success'); setTimeout(() => window.location.href = isFarmerRole ? '../farmer/dashboard.html' : '../customer/dashboard.html', 800);">
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Full Legal Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control rounded-12" placeholder="e.g. Maya Lin" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Contact Mobile Phone <span class="text-danger">*</span></label>
+                  <input type="tel" class="form-control rounded-12" placeholder="+1 (555) 000-0000" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-bold">Email Address <span class="text-danger">*</span></label>
+                <input type="email" class="form-control rounded-12" placeholder="maya.lin@example.com" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-bold">Neighborhood / Physical Address <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded-12" placeholder="Street, City, Postal Code" required>
+                <div class="form-text small">Used to automatically calculate distance to your nearest farmers markets.</div>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Create Password <span class="text-danger">*</span></label>
+                  <input type="password" class="form-control rounded-12" placeholder="Minimum 8 characters" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Confirm Password <span class="text-danger">*</span></label>
+                  <input type="password" class="form-control rounded-12" placeholder="Re-type password" required>
+                </div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="termsAgree" required checked>
+                <label class="form-check-label small text-muted" for="termsAgree">
+                  I agree to the MarketLink <a href="#" class="text-forest">Terms of Service</a> and <a href="#" class="text-forest">Privacy Policy</a>.
+                </label>
+              </div>
+
+              <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-forest rounded-pill py-3 fw-bold" id="submitRegBtn">
+                  <i class="bi bi-check2-circle me-1"></i> Register Free Account
+                </button>
+              </div>
+
+              <div class="text-center">
+                <span class="small text-muted">Already registered on MarketLink? </span>
+                <a href="{{ url('/login') }}" class="small text-forest fw-bold text-decoration-none">Sign In Here</a>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="marketlink-footer py-4">
+    <div class="container text-center">
+      <p class="mb-1 text-white-50">&copy; 2026 MarketLink – Connecting local farmers with local communities.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('assets/js/main.js') }}"></script>
+  <script>
+    let isFarmerRole = false;
+    function toggleRegisterRole(role) {
+      const custCard = document.getElementById('roleCustomerCard');
+      const farmCard = document.getElementById('roleFarmerCard');
+      const btn = document.getElementById('submitRegBtn');
+
+      if (role === 'farmer') {
+        isFarmerRole = true;
+        custCard.className = 'p-3 border rounded-16 bg-white text-center cursor-pointer';
+        farmCard.className = 'p-3 border rounded-16 bg-sage text-center cursor-pointer';
+        btn.innerHTML = '<i class="bi bi-shop me-1"></i> Continue to Farmer Stall Setup';
+      } else {
+        isFarmerRole = false;
+        custCard.className = 'p-3 border rounded-16 bg-cream text-center cursor-pointer';
+        farmCard.className = 'p-3 border rounded-16 bg-white text-center cursor-pointer';
+        btn.innerHTML = '<i class="bi bi-check2-circle me-1"></i> Register Free Account';
+      }
+    }
+  </script>
+</body>
+</html>

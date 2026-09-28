@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Markets | MarketLink Admin</title>
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="dashboard-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a class="navbar-brand text-white" href="../index.html">
+          <div class="brand-icon" style="width:36px; height:36px; font-size:1.1rem; background:#dc3545;"><i class="bi bi-shield-lock"></i></div>
+          <span class="brand-title text-white fs-5">MarketLink</span>
+        </a>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-heading">Platform Governance</li>
+        <li class="sidebar-item"><a href="dashboard.html" class="sidebar-link"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a></li>
+        <li class="sidebar-item"><a href="farmers.html" class="sidebar-link"><i class="bi bi-people"></i><span>Manage Farmers</span></a></li>
+        <li class="sidebar-item"><a href="customers.html" class="sidebar-link"><i class="bi bi-person-check"></i><span>Customers</span></a></li>
+        <li class="sidebar-item"><a href="markets.html" class="sidebar-link active"><i class="bi bi-shop"></i><span>Manage Markets</span></a></li>
+        <li class="sidebar-item"><a href="products.html" class="sidebar-link"><i class="bi bi-shield-exclamation"></i><span>Moderation</span></a></li>
+        <li class="sidebar-item"><a href="categories.html" class="sidebar-link"><i class="bi bi-grid"></i><span>Categories</span></a></li>
+        <li class="sidebar-item"><a href="reports.html" class="sidebar-link"><i class="bi bi-file-earmark-bar-graph"></i><span>Reports & Analytics</span></a></li>
+        <li class="sidebar-item"><a href="announcements.html" class="sidebar-link"><i class="bi bi-megaphone"></i><span>Announcements</span></a></li>
+        <li class="sidebar-item"><a href="settings.html" class="sidebar-link"><i class="bi bi-sliders"></i><span>System Settings</span></a></li>
+        <li class="sidebar-heading mt-3">Account</li>
+        <li class="sidebar-item"><a href="login.html" class="sidebar-link text-danger"><i class="bi bi-box-arrow-left text-danger"></i><span>Sign Out</span></a></li>
+      </ul>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="btn btn-outline-forest btn-sm rounded-circle d-lg-none" id="sidebarToggleBtn"><i class="bi bi-list fs-5"></i></button>
+          <h5 class="font-serif mb-0">Regional Farmers Markets Directory</h5>
+        </div>
+        <div class="topbar-right">
+          <button class="btn btn-sm btn-forest rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#newMarketModal">
+            <i class="bi bi-plus-lg me-1"></i> Register New Market
+          </button>
+        </div>
+      </header>
+
+      <div class="dashboard-container">
+        <div class="content-card">
+          <div class="table-responsive">
+            <table class="table table-custom">
+              <thead>
+                <tr>
+                  <th>Market Name</th>
+                  <th>Physical Address</th>
+                  <th>Operating Days</th>
+                  <th>Opening Hours</th>
+                  <th>Stall Capacity</th>
+                  <th>GPS Coordinates</th>
+                  <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Valley Green Community Market</strong></td>
+                  <td>142 Orchard Way, Green Valley</td>
+                  <td><span class="badge bg-sage text-forest small">Saturday & Sunday</span></td>
+                  <td>08:00 AM – 02:00 PM</td>
+                  <td><strong>24 Active Stalls</strong></td>
+                  <td><code class="small">37.7749, -122.4194</code></td>
+                  <td class="text-end">
+                    <a href="../pages/market-details.html?id=m1" target="_blank" class="btn btn-sm btn-outline-forest rounded-pill px-3">View</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Riverfront Organic Farmers Bazaar</strong></td>
+                  <td>88 Waterfront Esplanade, Riverside</td>
+                  <td><span class="badge bg-sage text-forest small">Wednesday & Saturday</span></td>
+                  <td>07:30 AM – 01:00 PM</td>
+                  <td><strong>32 Active Stalls</strong></td>
+                  <td><code class="small">37.7900, -122.4000</code></td>
+                  <td class="text-end">
+                    <a href="../pages/market-details.html?id=m2" target="_blank" class="btn btn-sm btn-outline-forest rounded-pill px-3">View</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Highland Heritage Producers Fair</strong></td>
+                  <td>500 Hilltop Ridge Rd, Highland Peak</td>
+                  <td><span class="badge bg-sage text-forest small">Sunday Morning</span></td>
+                  <td>09:00 AM – 03:00 PM</td>
+                  <td><strong>18 Active Stalls</strong></td>
+                  <td><code class="small">37.7550, -122.4400</code></td>
+                  <td class="text-end">
+                    <a href="../pages/market-details.html?id=m3" target="_blank" class="btn btn-sm btn-outline-forest rounded-pill px-3">View</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Sunnybrook Artisan Market</strong></td>
+                  <td>210 Meadowlane Plaza, Sunnybrook</td>
+                  <td><span class="badge bg-sage text-forest small">Friday Afternoon</span></td>
+                  <td>02:00 PM – 07:00 PM</td>
+                  <td><strong>28 Active Stalls</strong></td>
+                  <td><code class="small">37.7600, -122.3900</code></td>
+                  <td class="text-end">
+                    <a href="../pages/market-details.html?id=m4" target="_blank" class="btn btn-sm btn-outline-forest rounded-pill px-3">View</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- New Market Modal -->
+  <div class="modal fade" id="newMarketModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-24 border-0 shadow-lg">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title font-serif">Add New Regional Farmers Market</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form onsubmit="event.preventDefault(); showToast('New market location registered!', 'success'); bootstrap.Modal.getInstance(document.getElementById('newMarketModal')).hide();">
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Market Name</label>
+              <input type="text" class="form-control rounded-12" placeholder="e.g. Westside Organic Fair" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Street Address</label>
+              <input type="text" class="form-control rounded-12" placeholder="Street, City, Postal" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-bold">Operating Days</label>
+                <input type="text" class="form-control rounded-12" placeholder="e.g. Saturday & Sunday" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-bold">Opening Hours</label>
+                <input type="text" class="form-control rounded-12" placeholder="08:00 AM - 02:00 PM" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-4">
+              <div class="col-6">
+                <label class="form-label small fw-bold">Latitude</label>
+                <input type="text" class="form-control rounded-12" placeholder="37.7749" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-bold">Longitude</label>
+                <input type="text" class="form-control rounded-12" placeholder="-122.4194" required>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-outline-secondary rounded-pill px-3" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-forest rounded-pill px-4">Save Market</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

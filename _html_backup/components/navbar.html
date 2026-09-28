@@ -1,0 +1,115 @@
+<!-- Reusable Navbar Component -->
+<nav class="navbar navbar-expand-lg marketlink-navbar">
+  <div class="container">
+    <!-- Brand Logo -->
+    <a class="navbar-brand" href="index.html">
+      <div class="brand-icon">
+        <i class="bi bi-flower1"></i>
+      </div>
+      <div>
+        <span class="brand-title">MarketLink</span>
+        <span class="brand-subtitle">eGreen Basket</span>
+      </div>
+    </a>
+
+    <!-- Mobile Toggler -->
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavOffcanvas" aria-controls="mobileNavOffcanvas" aria-label="Toggle navigation">
+      <i class="bi bi-list fs-2 text-forest"></i>
+    </button>
+
+    <!-- Desktop Navigation Links -->
+    <div class="collapse navbar-collapse justify-content-center d-none d-lg-flex" id="navbarNav">
+      <ul class="navbar-nav gap-2">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/markets.html">Markets</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/farmers.html">Farmers</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/map.html">Map</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Desktop Right Actions -->
+    <div class="d-none d-lg-flex align-items-center gap-3">
+      <a href="pages/products.html" class="nav-action-btn" title="Search Products" aria-label="Search">
+        <i class="bi bi-search"></i>
+      </a>
+      <a href="pages/favorites.html" class="nav-action-btn" title="Saved Favorites" aria-label="Favorites">
+        <i class="bi bi-heart"></i>
+        <span class="badge-counter fav-badge-count" style="display:none;">0</span>
+      </a>
+      <a href="pages/cart.html" class="nav-action-btn" title="My Basket" aria-label="Cart">
+        <i class="bi bi-basket3"></i>
+        <span class="badge-counter cart-badge-count" style="display:none;">0</span>
+      </a>
+
+      <!-- Clean Sign In / Account Dropdown -->
+      <div class="dropdown ms-1">
+        <button class="btn btn-forest rounded-pill px-3 py-2 dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person-circle"></i>
+          <span>Sign In</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow-premium border-0 rounded-16 p-2 mt-2">
+          <li><h6 class="dropdown-header text-uppercase small text-muted">Customer Portal</h6></li>
+          <li><a class="dropdown-item rounded-8 py-2" href="customer/dashboard.html"><i class="bi bi-speedometer2 me-2 text-emerald"></i>Customer Dashboard</a></li>
+          <li><a class="dropdown-item rounded-8 py-2" href="customer/orders.html"><i class="bi bi-receipt me-2 text-emerald"></i>My Pre-Orders</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><h6 class="dropdown-header text-uppercase small text-muted">Farmer & Admin</h6></li>
+          <li><a class="dropdown-item rounded-8 py-2" href="farmer/dashboard.html"><i class="bi bi-shop me-2 text-gold"></i>Farmer Portal</a></li>
+          <li><a class="dropdown-item rounded-8 py-2" href="admin/dashboard.html"><i class="bi bi-shield-check me-2 text-danger"></i>Admin Portal</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item rounded-8 py-2" href="pages/login.html"><i class="bi bi-box-arrow-in-right me-2"></i>Sign In</a></li>
+          <li><a class="dropdown-item rounded-8 py-2 text-success fw-bold" href="pages/register.html"><i class="bi bi-person-plus me-2"></i>Create Free Account</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Offcanvas Menu -->
+<div class="offcanvas offcanvas-start border-0" tabindex="-1" id="mobileNavOffcanvas" aria-labelledby="mobileNavOffcanvasLabel">
+  <div class="offcanvas-header bg-forest text-white py-3">
+    <div class="d-flex align-items-center gap-2">
+      <div class="brand-icon" style="width:36px; height:36px; font-size:1.1rem;">
+        <i class="bi bi-flower1"></i>
+      </div>
+      <div>
+        <span class="brand-title text-white fs-5">MarketLink</span>
+        <span class="brand-subtitle text-mint" style="color:var(--primary-mint-light);">eGreen Basket</span>
+      </div>
+    </div>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column p-4">
+    <ul class="nav flex-column gap-2 mb-4">
+      <li class="nav-item"><a class="nav-link fs-6" href="index.html"><i class="bi bi-house me-2"></i>Home</a></li>
+      <li class="nav-item"><a class="nav-link fs-6" href="pages/markets.html"><i class="bi bi-geo-alt me-2"></i>Browse Markets</a></li>
+      <li class="nav-item"><a class="nav-link fs-6" href="pages/farmers.html"><i class="bi bi-people me-2"></i>Browse Farmers</a></li>
+      <li class="nav-item"><a class="nav-link fs-6" href="pages/products.html"><i class="bi bi-grid me-2"></i>All Products</a></li>
+      <li class="nav-item"><a class="nav-link fs-6" href="pages/map.html"><i class="bi bi-map me-2"></i>Nearby Map</a></li>
+      <li class="nav-item"><a class="nav-link fs-6" href="pages/about.html"><i class="bi bi-info-circle me-2"></i>About Us</a></li>
+      <li class="nav-item"><a class="nav-link fs-6" href="pages/contact.html"><i class="bi bi-envelope me-2"></i>Contact</a></li>
+    </ul>
+
+    <hr class="my-3 border-subtle">
+
+    <div class="d-flex flex-column gap-2 mb-auto">
+      <a href="pages/cart.html" class="btn btn-sage d-flex align-items-center justify-content-between">
+        <span><i class="bi bi-basket3 me-2"></i>My Basket</span>
+        <span class="badge bg-forest cart-badge-count">0</span>
+      </a>
+      <a href="pages/favorites.html" class="btn btn-outline-forest d-flex align-items-center justify-content-between">
+        <span><i class="bi bi-heart me-2"></i>Saved Favorites</span>
+        <span class="badge bg-danger fav-badge-count">0</span>
+      </a>
+    </div>
+
+    <div class="pt-4 border-top">
+      <div class="d-grid gap-2">
+        <a href="customer/dashboard.html" class="btn btn-outline-forest"><i class="bi bi-person me-2"></i>Customer Account</a>
+        <a href="farmer/dashboard.html" class="btn btn-forest"><i class="bi bi-shop me-2"></i>Farmer Portal</a>
+      </div>
+    </div>
+  </div>
+</div>

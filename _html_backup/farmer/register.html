@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Vendor Onboarding | MarketLink</title>
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+
+  <style>
+    .step-pill {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      background-color: #f0f0f0;
+      color: #888;
+      transition: all var(--transition-fast);
+    }
+    .step-pill.active {
+      background-color: var(--primary-forest);
+      color: #ffffff;
+    }
+    .step-pill.completed {
+      background-color: var(--accent-sage);
+      color: var(--primary-forest);
+    }
+  </style>
+</head>
+<body class="bg-cream">
+
+  <header class="py-4 bg-white border-bottom border-subtle">
+    <div class="container text-center">
+      <a class="navbar-brand justify-content-center" href="../index.html">
+        <div class="brand-icon"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="brand-title">MarketLink</span>
+          <span class="brand-subtitle">Farmer Registration</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          
+          <div class="text-center mb-4">
+            <span class="section-tag"><i class="bi bi-patch-check"></i> Direct-To-Consumer Platform</span>
+            <h2 class="font-serif text-forest mb-2">Register Your Farm or Market Stall</h2>
+            <p class="text-muted small">Connect with neighborhood conscious consumers. Zero online transaction deductions.</p>
+          </div>
+
+          <!-- Step Progress Indicator -->
+          <div class="d-flex gap-2 mb-4" id="stepIndicator">
+            <div class="step-pill active" id="stepPill1">1. Account</div>
+            <div class="step-pill" id="stepPill2">2. Stall Info</div>
+            <div class="step-pill" id="stepPill3">3. Markets</div>
+            <div class="step-pill" id="stepPill4">4. Pickup Windows</div>
+          </div>
+
+          <div class="card p-4 p-md-5 rounded-32 border-subtle shadow-md bg-white">
+            <form id="farmerOnboardingForm" onsubmit="event.preventDefault();">
+              
+              <!-- STEP 1: Account Details -->
+              <div id="stepSection1">
+                <h4 class="font-serif text-forest mb-3">Step 1: Account & Contact Details</h4>
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Primary Contact Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control rounded-12" placeholder="e.g. Thomas Vance" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Direct Phone Number <span class="text-danger">*</span></label>
+                    <input type="tel" class="form-control rounded-12" placeholder="+1 (555) 345-6789" required>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label small fw-bold">Email Address <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control rounded-12" placeholder="thomas@vanceorganic.com" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Password <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control rounded-12" placeholder="Minimum 8 characters" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Confirm Password <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control rounded-12" placeholder="Re-enter password" required>
+                  </div>
+                </div>
+                <div class="text-end">
+                  <button type="button" class="btn btn-forest rounded-pill px-4" onclick="goToStep(2)">
+                    Continue to Stall Details <i class="bi bi-arrow-right ms-1"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 2: Business / Stall Details -->
+              <div id="stepSection2" style="display: none;">
+                <h4 class="font-serif text-forest mb-3">Step 2: Business & Stall Information</h4>
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Farm / Stall Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control rounded-12" placeholder="e.g. Vance Heritage Organic Farm" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Physical Farm Location / County <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control rounded-12" placeholder="e.g. Green Valley Rural Route 4" required>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label small fw-bold">Product Categories Offered <span class="text-danger">*</span></label>
+                    <div class="d-flex flex-wrap gap-2">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="catVeg" checked>
+                        <label class="form-check-label small" for="catVeg">Vegetables</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="catFruit">
+                        <label class="form-check-label small" for="catFruit">Fruits</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="catDairy">
+                        <label class="form-check-label small" for="catDairy">Dairy & Cheese</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="catEggs">
+                        <label class="form-check-label small" for="catEggs">Eggs</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="catHoney">
+                        <label class="form-check-label small" for="catHoney">Raw Honey</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="catBakery">
+                        <label class="form-check-label small" for="catBakery">Bakery</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label small fw-bold">Stall Bio & Growing Story <span class="text-danger">*</span></label>
+                    <textarea class="form-control rounded-12" rows="3" placeholder="Tell shoppers about your regenerative soil methods, family heritage, or organic ethos..."></textarea>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <button type="button" class="btn btn-outline-secondary rounded-pill px-4" onclick="goToStep(1)">Back</button>
+                  <button type="button" class="btn btn-forest rounded-pill px-4" onclick="goToStep(3)">
+                    Continue to Market Selection <i class="bi bi-arrow-right ms-1"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 3: Market Affiliation -->
+              <div id="stepSection3" style="display: none;">
+                <h4 class="font-serif text-forest mb-3">Step 3: Market Affiliation</h4>
+                <div class="row g-3 mb-4">
+                  <div class="col-12">
+                    <label class="form-label small fw-bold">Primary Market Location <span class="text-danger">*</span></label>
+                    <select class="form-select rounded-12">
+                      <option selected>Valley Green Community Market (Sat & Sun)</option>
+                      <option>Riverfront Organic Farmers Bazaar (Wed & Sat)</option>
+                      <option>Highland Heritage Producers Fair (Sun Morning)</option>
+                      <option>Sunnybrook Artisan Market (Fri Afternoon)</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Assigned Stall Identifier / Number <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control rounded-12" placeholder="e.g. Stall #04" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Operating Days Active</label>
+                    <input type="text" class="form-control rounded-12" value="Saturday & Sunday" required>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <button type="button" class="btn btn-outline-secondary rounded-pill px-4" onclick="goToStep(2)">Back</button>
+                  <button type="button" class="btn btn-forest rounded-pill px-4" onclick="goToStep(4)">
+                    Continue to Pickup Windows <i class="bi bi-arrow-right ms-1"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 4: Pickup & Cutoff Windows -->
+              <div id="stepSection4" style="display: none;">
+                <h4 class="font-serif text-forest mb-3">Step 4: Pickup Windows & Pre-Order Rules</h4>
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Earliest Morning Pickup Time <span class="text-danger">*</span></label>
+                    <input type="time" class="form-control rounded-12" value="08:00" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Latest Morning Pickup Time <span class="text-danger">*</span></label>
+                    <input type="time" class="form-control rounded-12" value="13:30" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Pre-Order Cutoff Time (Hours Before Market Opening)</label>
+                    <select class="form-select rounded-12">
+                      <option>6 Hours Before</option>
+                      <option selected>12 Hours Before</option>
+                      <option>24 Hours Before</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-bold">Market Stall Map Pin Coordinates</label>
+                    <input type="text" class="form-control rounded-12" value="37.7749, -122.4194 (Stall #04)">
+                  </div>
+                </div>
+
+                <div class="p-3 bg-sage rounded-16 small mb-4">
+                  <i class="bi bi-info-circle-fill text-emerald me-1"></i>
+                  Upon registration, your stall profile will be submitted to the local market manager for automated verification. You can immediately access your dashboard to add weekly produce stock.
+                </div>
+
+                <div class="d-flex justify-content-between">
+                  <button type="button" class="btn btn-outline-secondary rounded-pill px-4" onclick="goToStep(3)">Back</button>
+                  <button type="button" class="btn btn-forest rounded-pill px-5 fw-bold" onclick="finishFarmerOnboarding()">
+                    <i class="bi bi-check2-circle me-1"></i> Complete Vendor Registration
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="marketlink-footer py-4">
+    <div class="container text-center">
+      <p class="mb-1 text-white-50">&copy; 2026 MarketLink – Connecting local farmers with local communities.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function goToStep(step) {
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById(`stepSection${i}`).style.display = i === step ? 'block' : 'none';
+        const pill = document.getElementById(`stepPill${i}`);
+        if (i < step) {
+          pill.className = 'step-pill completed';
+        } else if (i === step) {
+          pill.className = 'step-pill active';
+        } else {
+          pill.className = 'step-pill';
+        }
+      }
+    }
+
+    function finishFarmerOnboarding() {
+      showToast('Farmer Stall registered successfully! Redirecting to dashboard...', 'success');
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 900);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Order Pickup Booking | MarketLink – eGreen Basket</title>
+  <meta name="description" content="Select your farmers market pickup window and confirm your organic pre-order. Payment is settled in person upon collection.">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg marketlink-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <div class="brand-icon"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="brand-title">MarketLink</span>
+          <span class="brand-subtitle">eGreen Basket</span>
+        </div>
+      </a>
+
+      <div class="ms-auto d-flex align-items-center gap-3">
+        <span class="text-muted small d-none d-md-inline"><i class="bi bi-shield-check text-emerald me-1"></i> Secure Pre-Order Booking</span>
+        <a href="cart.html" class="btn btn-outline-forest rounded-pill btn-sm"><i class="bi bi-arrow-left me-1"></i> Return to Basket</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Checkout / Pickup Process -->
+  <section class="py-5">
+    <div class="container">
+      <!-- Steps Indicator -->
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-8">
+          <div class="d-flex justify-content-between position-relative">
+            <div class="text-center flex-fill">
+              <div class="rounded-circle bg-emerald text-white mx-auto mb-2 fw-bold" style="width:36px; height:36px; line-height:36px;">1</div>
+              <span class="small fw-bold text-forest">Review Produce</span>
+            </div>
+            <div class="text-center flex-fill">
+              <div class="rounded-circle bg-emerald text-white mx-auto mb-2 fw-bold" style="width:36px; height:36px; line-height:36px;">2</div>
+              <span class="small fw-bold text-forest">Select Pickup Slot</span>
+            </div>
+            <div class="text-center flex-fill">
+              <div class="rounded-circle bg-gold text-white mx-auto mb-2 fw-bold" style="width:36px; height:36px; line-height:36px;">3</div>
+              <span class="small fw-bold text-gold">Confirm Pre-Order</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Main Form Area -->
+        <div class="col-lg-8">
+          <form id="preOrderBookingForm" onsubmit="event.preventDefault(); window.location.href='order-confirmation.html';">
+            
+            <!-- Step 1: Customer Contact Information -->
+            <div class="card p-4 rounded-24 border-subtle shadow-xs bg-white mb-4">
+              <h5 class="font-serif mb-3"><i class="bi bi-person-circle text-emerald me-2"></i>1. Collector Information</h5>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Full Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control rounded-12" value="Alexander Wright" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Mobile Phone <span class="text-danger">*</span></label>
+                  <input type="tel" class="form-control rounded-12" value="+1 (555) 234-8901" required>
+                  <div class="form-text small">Used for SMS pickup notification when order is ready.</div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label small fw-bold">Email Address <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control rounded-12" value="alexander.wright@example.com" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Pickup Market & Date Slot -->
+            <div class="card p-4 rounded-24 border-subtle shadow-xs bg-white mb-4">
+              <h5 class="font-serif mb-3"><i class="bi bi-clock-history text-emerald me-2"></i>2. Choose Pickup Market & Window</h5>
+              
+              <div class="mb-3">
+                <label class="form-label small fw-bold">Designated Farmers Market</label>
+                <select class="form-select rounded-12">
+                  <option selected>Valley Green Community Market (142 Orchard Way)</option>
+                  <option>Riverfront Organic Farmers Bazaar (88 Waterfront Esplanade)</option>
+                  <option>Highland Heritage Producers Fair (500 Hilltop Ridge Rd)</option>
+                </select>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Select Market Date</label>
+                  <select class="form-select rounded-12">
+                    <option selected>Saturday, October 3, 2026 (Morning Market)</option>
+                    <option>Sunday, October 4, 2026 (Morning Market)</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Pickup Time Slot</label>
+                  <div class="d-flex flex-column gap-2">
+                    <div class="form-check p-2 border rounded-12 bg-cream">
+                      <input class="form-check-input ms-1" type="radio" name="pickupSlotRadio" id="slot1" checked>
+                      <label class="form-check-label ms-2 small fw-bold" for="slot1">
+                        08:30 AM – 10:00 AM <span class="badge bg-success small ms-2">Recommended</span>
+                      </label>
+                    </div>
+                    <div class="form-check p-2 border rounded-12">
+                      <input class="form-check-input ms-1" type="radio" name="pickupSlotRadio" id="slot2">
+                      <label class="form-check-label ms-2 small fw-bold" for="slot2">
+                        10:00 AM – 11:30 AM
+                      </label>
+                    </div>
+                    <div class="form-check p-2 border rounded-12">
+                      <input class="form-check-input ms-1" type="radio" name="pickupSlotRadio" id="slot3">
+                      <label class="form-check-label ms-2 small fw-bold" for="slot3">
+                        11:30 AM – 01:00 PM
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-3 bg-cream rounded-16 border-subtle">
+                <div class="d-flex align-items-center gap-3">
+                  <i class="bi bi-geo-alt-fill fs-3 text-emerald"></i>
+                  <div>
+                    <h6 class="mb-1 text-forest">Stall Pickup Instructions</h6>
+                    <p class="small text-muted mb-0">Show your Order ID receipt at <strong>Stall #04 (Vance Farm)</strong>. Your pre-harvested box will be ready with your name.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Special Notes -->
+            <div class="card p-4 rounded-24 border-subtle shadow-xs bg-white mb-4">
+              <h5 class="font-serif mb-3"><i class="bi bi-chat-left-dots text-emerald me-2"></i>3. Grower Notes (Optional)</h5>
+              <textarea class="form-control rounded-12" rows="2" placeholder="e.g. Please select slightly greener tomatoes for mid-week ripening, or pack in recycled cardboard box."></textarea>
+            </div>
+
+            <!-- Submit Button (Confirm Pre-Order) -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-forest py-3 rounded-pill fw-bold fs-6">
+                <i class="bi bi-check2-circle me-1"></i> Place Pre-Order (Pay in Person)
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Sidebar Summary -->
+        <div class="col-lg-4">
+          <div class="card p-4 rounded-24 border-subtle shadow-xs bg-white sticky-top" style="top: 100px;">
+            <h5 class="font-serif mb-3">Order Details Review</h5>
+            
+            <div id="checkoutOrderReview">
+              <!-- Rendered via cart.js CartService.renderCheckoutSummary() -->
+            </div>
+
+            <div class="py-3 border-top border-bottom border-subtle my-3">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <span class="fw-bold">Pay at Pickup Total:</span>
+                <span class="fs-4 fw-bold text-forest" id="checkoutTotalAmount">$15.25</span>
+              </div>
+              <div class="small text-muted mt-1">Cash, Mobile Pay, or Card accepted at vendor stall.</div>
+            </div>
+
+            <div class="p-3 bg-gold-subtle rounded-16 small text-dark border-0">
+              <div class="fw-bold mb-1"><i class="bi bi-shield-lock-fill text-gold me-1"></i> Zero Cancellation Penalties</div>
+              <div>Free order cancellation up to 6 hours before market gate opens.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="marketlink-footer py-4">
+    <div class="container text-center">
+      <p class="mb-1 text-white-50">&copy; 2026 MarketLink – Connecting local farmers with local communities.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/ai-assistant.js"></script>
+</body>
+</html>

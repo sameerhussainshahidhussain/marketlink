@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved Favorites | MarketLink – eGreen Basket</title>
+  <meta name="description" content="View your favorite local farmers, markets, and saved seasonal organic produce.">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg marketlink-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <div class="brand-icon"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="brand-title">MarketLink</span>
+          <span class="brand-subtitle">eGreen Basket</span>
+        </div>
+      </a>
+
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavOffcanvas">
+        <i class="bi bi-list fs-1 text-forest"></i>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center d-none d-lg-flex">
+        <ul class="navbar-nav gap-1">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="markets.html">Markets</a></li>
+          <li class="nav-item"><a class="nav-link" href="farmers.html">Farmers</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="map.html">Map</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="d-none d-lg-flex align-items-center gap-3">
+        <a href="favorites.html" class="nav-action-btn active" title="Favorites"><i class="bi bi-heart-fill text-danger"></i></a>
+        <a href="cart.html" class="nav-action-btn" title="Basket"><i class="bi bi-basket3"></i><span class="badge-counter cart-badge-count" style="display:none;">0</span></a>
+        <a href="map.html" class="btn btn-forest"><i class="bi bi-geo-alt-fill text-gold"></i> Find Fresh Near You</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Offcanvas -->
+  <div class="offcanvas offcanvas-start border-0" tabindex="-1" id="mobileNavOffcanvas">
+    <div class="offcanvas-header bg-forest text-white py-3">
+      <div class="d-flex align-items-center gap-2">
+        <div class="brand-icon" style="width:36px; height:36px; font-size:1.1rem;"><i class="bi bi-flower1"></i></div>
+        <span class="brand-title text-white fs-5">MarketLink</span>
+      </div>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-4">
+      <ul class="nav flex-column gap-2 mb-4">
+        <li class="nav-item"><a class="nav-link fs-6" href="../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link fs-6" href="markets.html">Browse Markets</a></li>
+        <li class="nav-item"><a class="nav-link fs-6" href="farmers.html">Browse Farmers</a></li>
+        <li class="nav-item"><a class="nav-link fs-6" href="products.html">All Products</a></li>
+        <li class="nav-item"><a class="nav-link fs-6" href="map.html">Nearby Map</a></li>
+      </ul>
+      <div class="d-grid gap-2 pt-3 border-top">
+        <a href="cart.html" class="btn btn-sage"><i class="bi bi-basket3 me-2"></i>My Basket</a>
+        <a href="login.html" class="btn btn-outline-forest">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Header -->
+  <section class="py-4 bg-cream border-bottom border-subtle">
+    <div class="container">
+      <nav aria-label="breadcrumb" class="mb-2">
+        <ol class="breadcrumb small">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Favorites</li>
+        </ol>
+      </nav>
+      <h1 class="display-6 font-serif mb-1">Your Saved Favorites</h1>
+      <p class="text-muted small mb-0">Keep quick track of your favorite organic growers and bookmarked weekly produce.</p>
+    </div>
+  </section>
+
+  <!-- Tabs & Cards Content -->
+  <section class="py-5">
+    <div class="container">
+      <!-- Tabs Navigation -->
+      <ul class="nav nav-pills justify-content-center mb-5 gap-2" id="favTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active rounded-pill px-4 py-2 fw-bold" id="favFarmersTab" data-bs-toggle="pill" data-bs-target="#favFarmersPane" type="button" role="tab">
+            <i class="bi bi-people me-2"></i>Favorite Farmers (2)
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link rounded-pill px-4 py-2 fw-bold" id="favProductsTab" data-bs-toggle="pill" data-bs-target="#favProductsPane" type="button" role="tab">
+            <i class="bi bi-basket me-2"></i>Favorite Products (2)
+          </button>
+        </li>
+      </ul>
+
+      <!-- Tabs Content -->
+      <div class="tab-content" id="favTabsContent">
+        <!-- Pane 1: Farmers -->
+        <div class="tab-pane fade show active" id="favFarmersPane" role="tabpanel">
+          <div class="row g-4">
+            <!-- Farmer 1 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="farmer-card">
+                <div class="card-image-wrap">
+                  <span class="card-badge-top"><i class="bi bi-patch-check-fill text-emerald"></i> Verified Grower</span>
+                  <button class="favorite-btn active" data-id="f1" data-name="Vance Farm" data-type="farmer"><i class="bi bi-heart-fill text-danger"></i></button>
+                  <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=500&auto=format&fit=crop&q=80" alt="Vance Farm" class="card-img-top">
+                </div>
+                <div class="card-body-custom">
+                  <h5 class="font-serif fs-6 mb-1">Vance Heritage Organic Farm</h5>
+                  <p class="small text-muted mb-2">Thomas & Eleanor Vance &bull; Valley Green Market</p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto pt-2 border-top">
+                    <span class="text-gold small fw-bold"><i class="bi bi-star-fill"></i> 4.9 (128)</span>
+                    <a href="farmer-profile.html?id=f1" class="btn btn-sm btn-forest rounded-pill px-3">View Stall</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Farmer 2 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="farmer-card">
+                <div class="card-image-wrap">
+                  <span class="card-badge-top"><i class="bi bi-patch-check-fill text-emerald"></i> Verified Apiary</span>
+                  <button class="favorite-btn active" data-id="f2" data-name="Wild Blossom Apiary" data-type="farmer"><i class="bi bi-heart-fill text-danger"></i></button>
+                  <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=500&auto=format&fit=crop&q=80" alt="Sarah Jenkins" class="card-img-top">
+                </div>
+                <div class="card-body-custom">
+                  <h5 class="font-serif fs-6 mb-1">Wild Blossom Apiary & Orchard</h5>
+                  <p class="small text-muted mb-2">Sarah Jenkins &bull; Riverfront Bazaar</p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto pt-2 border-top">
+                    <span class="text-gold small fw-bold"><i class="bi bi-star-fill"></i> 5.0 (94)</span>
+                    <a href="farmer-profile.html?id=f2" class="btn btn-sm btn-forest rounded-pill px-3">View Stall</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pane 2: Products -->
+        <div class="tab-pane fade" id="favProductsPane" role="tabpanel">
+          <div class="row g-4">
+            <!-- Product 1 -->
+            <div class="col-sm-6 col-lg-3">
+              <div class="product-card">
+                <div class="card-image-wrap">
+                  <span class="card-badge-top stock-in"><i class="bi bi-circle-fill" style="font-size:0.55rem;"></i> In Stock</span>
+                  <button class="favorite-btn active" data-id="p1" data-name="Vine-Ripened Heirloom Tomatoes" data-type="product"><i class="bi bi-heart-fill text-danger"></i></button>
+                  <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=80" alt="Heirloom Tomatoes" class="card-img-top">
+                </div>
+                <div class="card-body-custom">
+                  <span class="text-muted small text-uppercase fw-bold">Vegetables</span>
+                  <h5 class="card-title font-serif fs-6 mb-1"><a href="product-details.html?id=p1" class="text-forest text-decoration-none">Vine-Ripened Heirloom Tomatoes</a></h5>
+                  <p class="text-muted small mb-2">Vance Heritage Farm</p>
+                  <div class="d-flex align-items-baseline justify-content-between mt-auto pt-2 border-top">
+                    <div><span class="product-price">$4.50</span><span class="product-unit">/lb</span></div>
+                    <button class="btn btn-sm btn-forest rounded-pill px-3" onclick="addToCartClicked('p1', 'Vine-Ripened Heirloom Tomatoes', 4.50, 'lb', 'Vance Heritage Farm', 'Valley Green Market', 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=80')">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-sm-6 col-lg-3">
+              <div class="product-card">
+                <div class="card-image-wrap">
+                  <span class="card-badge-top stock-in"><i class="bi bi-circle-fill" style="font-size:0.55rem;"></i> In Stock</span>
+                  <button class="favorite-btn active" data-id="p4" data-name="Raw Wildflower Honey" data-type="product"><i class="bi bi-heart-fill text-danger"></i></button>
+                  <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=500&auto=format&fit=crop&q=80" alt="Raw Honey" class="card-img-top">
+                </div>
+                <div class="card-body-custom">
+                  <span class="text-muted small text-uppercase fw-bold">Honey</span>
+                  <h5 class="card-title font-serif fs-6 mb-1"><a href="product-details.html?id=p4" class="text-forest text-decoration-none">Raw Mountain Wildflower Honey</a></h5>
+                  <p class="text-muted small mb-2">Wild Blossom Apiary</p>
+                  <div class="d-flex align-items-baseline justify-content-between mt-auto pt-2 border-top">
+                    <div><span class="product-price">$11.50</span><span class="product-unit">/jar</span></div>
+                    <button class="btn btn-sm btn-forest rounded-pill px-3" onclick="addToCartClicked('p4', 'Raw Mountain Wildflower Honey', 11.50, '16oz jar', 'Wild Blossom Apiary', 'Riverfront Bazaar', 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=500&auto=format&fit=crop&q=80')">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="marketlink-footer py-4">
+    <div class="container text-center">
+      <p class="mb-1 text-white-50">&copy; 2026 MarketLink – Connecting local farmers with local communities.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/ai-assistant.js"></script>
+</body>
+</html>

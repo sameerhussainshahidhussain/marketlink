@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organic Produce Catalog | MarketLink – eGreen Basket</title>
+  <meta name="description" content="Explore fresh seasonal organic produce, heirloom vegetables, farm fresh eggs, raw honey, and artisan bakery goods.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg marketlink-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url('/') }}">
+        <div class="brand-icon"><i class="bi bi-flower1"></i></div>
+        <div>
+          <span class="brand-title">MarketLink</span>
+          <span class="brand-subtitle">eGreen Basket</span>
+        </div>
+      </a>
+
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavOffcanvas">
+        <i class="bi bi-list fs-1 text-forest"></i>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center d-none d-lg-flex">
+        <ul class="navbar-nav gap-1">
+          <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url('/markets') }}">Markets</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url('/farmers') }}">Farmers</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{{ url('/products') }}">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url('/map') }}">Map</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="d-none d-lg-flex align-items-center gap-3">
+        <a href="{{ url('/favorites') }}" class="nav-action-btn" title="Favorites"><i class="bi bi-heart"></i><span class="badge-counter fav-badge-count" style="display:none;">0</span></a>
+        <a href="{{ url('/cart') }}" class="nav-action-btn" title="Basket"><i class="bi bi-basket3"></i><span class="badge-counter cart-badge-count" style="display:none;">0</span></a>
+        <a href="{{ url('/map') }}" class="btn btn-forest"><i class="bi bi-geo-alt-fill text-gold"></i> Find Fresh Near You</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="offcanvas offcanvas-start border-0" tabindex="-1" id="mobileNavOffcanvas">
+    <div class="offcanvas-header bg-forest text-white py-3">
+      <div class="d-flex align-items-center gap-2">
+        <div class="brand-icon" style="width:36px; height:36px; font-size:1.1rem;"><i class="bi bi-flower1"></i></div>
+        <span class="brand-title text-white fs-5">MarketLink</span>
+      </div>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-4">
+      <ul class="nav flex-column gap-2 mb-4">
+        <li class="nav-item"><a class="nav-link fs-6" href="{{ url('/') }}">Home</a></li>
+        <li class="nav-item"><a class="nav-link fs-6" href="{{ url('/markets') }}">Browse Markets</a></li>
+        <li class="nav-item"><a class="nav-link fs-6" href="{{ url('/farmers') }}">Browse Farmers</a></li>
+        <li class="nav-item"><a class="nav-link active fs-6" href="{{ url('/products') }}">All Products</a></li>
+        <li class="nav-item"><a class="nav-link fs-6" href="{{ url('/map') }}">Nearby Map</a></li>
+      </ul>
+      <div class="d-grid gap-2 pt-3 border-top">
+        <a href="{{ url('/cart') }}" class="btn btn-sage"><i class="bi bi-basket3 me-2"></i>My Basket</a>
+        <a href="{{ url('/login') }}" class="btn btn-outline-forest">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-4 bg-cream border-bottom border-subtle">
+    <div class="container">
+      <nav aria-label="breadcrumb" class="mb-2">
+        <ol class="breadcrumb small">
+          <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Products</li>
+        </ol>
+      </nav>
+      <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+        <div>
+          <h1 class="display-6 font-serif mb-1">Seasonal Harvest Catalog</h1>
+          <p class="text-muted small mb-0">Direct from field to basket. Pre-order freshly picked produce for your weekend market pickup.</p>
+        </div>
+        <div>
+          <span class="badge bg-sage text-forest fs-6 px-3 py-2 rounded-pill fw-bold" id="productResultsCount">8 Products Found</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        
+        <div class="col-lg-3 d-none d-lg-block">
+          <div class="card p-4 rounded-24 border-subtle shadow-xs sticky-top" style="top: 100px;">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h5 class="font-serif fs-5 mb-0">Filter Catalog</h5>
+              <button class="btn btn-link text-forest text-decoration-none small p-0" onclick="resetFilters()">Reset All</button>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-bold text-uppercase small text-muted">Category</label>
+              <div class="d-flex flex-column gap-1">
+                <button class="btn btn-sm text-start cat-pill-btn active py-2 px-3 rounded-12" data-category="all">
+                  <i class="bi bi-grid me-2"></i> All Categories
+                </button>
+                <button class="btn btn-sm text-start cat-pill-btn py-2 px-3 rounded-12" data-category="vegetables">
+                  <i class="bi bi-flower2 me-2"></i> Vegetables
+                </button>
+                <button class="btn btn-sm text-start cat-pill-btn py-2 px-3 rounded-12" data-category="fruits">
+                  <i class="bi bi-apple me-2"></i> Fruits
+                </button>
+                <button class="btn btn-sm text-start cat-pill-btn py-2 px-3 rounded-12" data-category="dairy">
+                  <i class="bi bi-cup-straw me-2"></i> Dairy & Cheese
+                </button>
+                <button class="btn btn-sm text-start cat-pill-btn py-2 px-3 rounded-12" data-category="eggs">
+                  <i class="bi bi-egg me-2"></i> Farm Fresh Eggs
+                </button>
+                <button class="btn btn-sm text-start cat-pill-btn py-2 px-3 rounded-12" data-category="honey">
+                  <i class="bi bi-droplet-half me-2"></i> Raw Honey
+                </button>
+                <button class="btn btn-sm text-start cat-pill-btn py-2 px-3 rounded-12" data-category="baked">
+                  <i class="bi bi-cake2 me-2"></i> Baked Goods
+                </button>
+                <button class="btn btn-sm text-start cat-pill-btn py-2 px-3 rounded-12" data-category="herbs">
+                  <i class="bi bi-tree me-2"></i> Herbs & Greens
+                </button>
+              </div>
+            </div>
+
+            <div class="mb-4 pt-3 border-top border-subtle">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <label class="form-label fw-bold text-uppercase small text-muted mb-0">Max Price</label>
+                <span class="fw-bold text-forest" id="priceRangeDisplay">$50.00</span>
+              </div>
+              <input type="range" class="form-range" id="priceRangeSlider" min="2" max="50" step="1" value="50">
+            </div>
+
+            <div class="p-3 bg-sage rounded-16 small border-0">
+              <div class="fw-bold text-forest mb-1"><i class="bi bi-shield-check text-emerald me-1"></i> Pay at Market Pickup</div>
+              <div class="text-muted" style="font-size: 0.8rem;">No payment card required online. Simply reserve ahead and inspect produce in person.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-9">
+          
+          <div class="card p-3 rounded-20 border-subtle shadow-xs mb-4">
+            <div class="row g-3 align-items-center">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <span class="input-group-text bg-transparent border-0 text-muted ps-2"><i class="bi bi-search"></i></span>
+                  <input type="text" id="productSearchInput" class="form-control border-0 shadow-none ps-1" placeholder="Search tomatoes, kale, sourdough, eggs...">
+                </div>
+              </div>
+              <div class="col-md-3 col-6">
+                <select class="form-select border-0 shadow-none bg-light rounded-pill py-2" id="categoryFilterSelect">
+                  <option value="all">All Categories</option>
+                  <option value="vegetables">Vegetables</option>
+                  <option value="fruits">Fruits</option>
+                  <option value="dairy">Dairy & Cheese</option>
+                  <option value="eggs">Eggs</option>
+                  <option value="honey">Raw Honey</option>
+                  <option value="baked">Baked Goods</option>
+                  <option value="herbs">Herbs</option>
+                </select>
+              </div>
+              <div class="col-md-3 col-6">
+                <select class="form-select border-0 shadow-none bg-light rounded-pill py-2" id="productSortSelect">
+                  <option value="featured">Featured</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="rating">Top Customer Rated</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4" id="productsCatalogGrid">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="marketlink-footer py-4">
+    <div class="container text-center">
+      <p class="mb-1 text-white-50">&copy; 2026 MarketLink – Connecting local farmers with local communities.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('assets/js/main.js') }}"></script>
+  <script src="{{ asset('assets/js/cart.js') }}"></script>
+  <script src="{{ asset('assets/js/products.js') }}"></script>
+  <script src="{{ asset('assets/js/ai-assistant.js') }}"></script>
+</body>
+</html>

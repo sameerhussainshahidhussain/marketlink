@@ -1,0 +1,115 @@
+/* ==========================================================================
+   MarketLink Responsive Tweaks
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .hero-heading {
+    font-size: 2.8rem;
+  }
+  .hero-main-img {
+    height: 440px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .hero-section {
+    padding: 40px 0 60px;
+  }
+  
+  .hero-heading {
+    font-size: 2.3rem;
+  }
+
+  .hero-subtext {
+    font-size: 1.05rem;
+  }
+
+  .hero-main-img {
+    height: 380px;
+    margin-top: 30px;
+  }
+
+  .floating-pill {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  .pill-1 {
+    bottom: 20px;
+    left: 10px;
+  }
+
+  .pill-2 {
+    top: 20px;
+    right: 10px;
+  }
+
+  .order-timeline {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .order-timeline::before {
+    display: none;
+  }
+
+  .timeline-step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .timeline-node {
+    margin: 0;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
+
+  .section-tag {
+    font-size: 0.78rem;
+  }
+
+  .trust-indicator-card {
+    padding: 16px;
+  }
+
+  .ai-assistant-panel {
+    bottom: 84px;
+    right: 15px;
+    left: 15px;
+    width: auto;
+    height: 480px;
+  }
+
+  .ai-assistant-toggle {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  .card-image-wrap {
+    height: 190px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .btn-forest, .btn-emerald, .btn-gold, .btn-outline-forest {
+    padding: 10px 20px;
+    font-size: 0.88rem;
+  }
+
+  .stat-card {
+    padding: 18px;
+  }
+
+  .stat-value {
+    font-size: 1.6rem;
+  }
+}
