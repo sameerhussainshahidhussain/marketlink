@@ -38,16 +38,45 @@ Weekend farmers markets are the best place to get real, fresh produce directly f
 
 ---
 
-## Test Accounts & Credentials
+## 🔐 Test Accounts & Login Credentials
 
-Every account comes pre-seeded with orders, active products, and realistic sample data.  
-All accounts share the default password: **`1234567890`**
+> **⚠️ All accounts share the same password: `1234567890`**
 
-### 1. System Administrator
-- **Email**: `sameer@gmail.com`  
-- **Access**: Full platform oversight, farmer verifications, market locations, announcements, category management.
+Every account is pre-seeded with realistic sample data including orders, products, reviews, and market slots.  
+Login URL: **`http://127.0.0.1:8000/login`**
 
-### 2. Verified Farmers (Vendors)
+---
+
+### 🚀 Quick Reference — All Logins at a Glance
+
+| Role | Email | Password | Dashboard |
+| :--- | :--- | :--- | :--- |
+| **Admin** | `sameer@gmail.com` | `1234567890` | `/admin/dashboard` |
+| **Farmer** | `ahmed@gmail.com` | `1234567890` | `/farmer/dashboard` |
+| **Farmer** | `fatima@gmail.com` | `1234567890` | `/farmer/dashboard` |
+| **Farmer** | `hassan@gmail.com` | `1234567890` | `/farmer/dashboard` |
+| **Farmer** | `sara@gmail.com` | `1234567890` | `/farmer/dashboard` |
+| **Customer** | `customer@gmail.com` | `1234567890` | `/customer/dashboard` |
+| **Customer** | `amina@gmail.com` | `1234567890` | `/customer/dashboard` |
+| **Customer** | `zainab@gmail.com` | `1234567890` | `/customer/dashboard` |
+| **Customer** | `bilal@gmail.com` | `1234567890` | `/customer/dashboard` |
+
+---
+
+### 1. ⚙️ System Administrator
+
+| Field | Value |
+| :--- | :--- |
+| **Email** | `sameer@gmail.com` |
+| **Password** | `1234567890` |
+| **Access** | Full platform oversight, farmer verifications, market locations, announcements, category management |
+
+---
+
+### 2. 🚜 Verified Farmers (Vendors)
+
+**Password for all farmer accounts: `1234567890`**
+
 | Business / Stall | Owner | Email | Focus Produce |
 | :--- | :--- | :--- | :--- |
 | **Ali Organic Farm** | Ahmed Ali | `ahmed@gmail.com` | Organic tomatoes, spinach, seasonal veggies (Lahore) |
@@ -55,7 +84,12 @@ All accounts share the default password: **`1234567890`**
 | **Raza Honey Co.** | Hassan Raza | `hassan@gmail.com` | Raw Sidr & Wildflower mountain honey (Islamabad) |
 | **Malik Herb Gardens** | Sara Malik | `sara@gmail.com` | Fresh mint, coriander, live potted herbs (Islamabad) |
 
-### 3. Shoppers (Customers)
+---
+
+### 3. 🛒 Shoppers (Customers)
+
+**Password for all customer accounts: `1234567890`**
+
 | Customer Name | Email | City | Phone |
 | :--- | :--- | :--- | :--- |
 | **Tariq Mehmood** | `customer@gmail.com` | Lahore | 0301-1112233 |
